@@ -23,8 +23,8 @@ db.once('open', function(){
   var UserSchema = new Schema({
     username: String,
     roomname: String,
-    messages: String
-    //messages: [MessageSchema]
+    //messages: String
+    messages: [MessageSchema]
 
   });
 
@@ -33,7 +33,7 @@ db.once('open', function(){
   var User = mongoose.model('User', UserSchema);
   var Message = mongoose.model('Message', MessageSchema);
   //[{user: 'Daniel'}]
-  var user = new User({username: 'Daniel', messages: 'this'});
+  var user = new User({username: 'Daniel', messages: [{user: 'Daniel'}]});
   var message = new Message({text: 'this is my message'});
 
   // Message.pre('save', function(next){
